@@ -1,20 +1,19 @@
-import dataFactory from "../factory/DataFactory.js"
-import userFactory from "../factory/UserFactory.js"
+/* imports data factory */
+import dataFactoryFn from '../factory/DataFactory.js'
+/* imports user factory */
+import userFactory from '../factory/UserFactory.js'
 
-const dataDFactory = new dataFactory()
-const app = document.querySelector("#app")
+/* function from dataFactory  */
+const dataFactory = new dataFactoryFn()
+const app = document.querySelector('#app')
 
-const url = "https://jsonplaceholder.typicode.com/users"
-dataDFactory.gringData(url).then((res) => {
-	console.log(res)
-	res.forEach((user) => {
-		const rightUser = new userFactory(user)
-		app.appendChild(rightUser.article())
+const url = 'https://jsonplaceholder.typicode.com/users'
+
+dataFactory.gringData(url).then((res) => {
+	// console.log(res)
+	res.forEach((user, indx) => {
+		const factoryUsr = new userFactory(user)
+		app.appendChild(factoryUsr.article(indx))
+		console.log(factoryUsr.article(indx))
 	})
 })
-
-/*
-
-new promise ?
-
-*/

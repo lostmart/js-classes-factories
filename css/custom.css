@@ -9,11 +9,31 @@
 	padding: 5px 20px;
 }
 
-.collection {
-	margin: 1.2rem 0 1rem 0;
+.card .card-content {
+	padding: 10px 24px;
 }
-.collection .collection-item {
-	padding: 15px 20px;
+
+.card .card-content .card-title {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 2px;
+}
+
+.card .card-reveal {
+	padding: 4px 24px;
+}
+
+.card .card-reveal .card-title {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.collection li {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 
 @media (min-width: 575.98px) {
