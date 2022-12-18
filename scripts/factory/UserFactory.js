@@ -54,7 +54,15 @@ export default function userFactory(newUser) {
 		ulCollection.appendChild(listItem("call", newUserModel.phone))
 		ulCollection.appendChild(listItem("alternate_email", newUserModel.email))
 		ulCollection.appendChild(listItem("language", newUserModel.website))
-		ulCollection.appendChild(listItem("apartment", newUserModel.address))
+		const address_one = `  ${newUserModel.address.suite} ${newUserModel.address.street}`
+		const listAddresAdress = listItem("apartment", address_one)
+		const addressCont = textContainer("div", "", "addressCont")
+
+		listAddresAdress.appendChild(addressCont)
+		/*
+		addressCont.appendChild(listAddresAdress)
+*/
+		ulCollection.appendChild(addressCont)
 
 		cardReveal.appendChild(spanTitle)
 		cardReveal.appendChild(ulCollection)
