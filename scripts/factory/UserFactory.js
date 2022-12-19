@@ -1,7 +1,7 @@
-import User from "../classes/UserClasses.js"
-import textContainer from "./DomFactory.js"
-import photos from "../../photos.js"
-import { listItem } from "./DomFactory.js"
+import User from '../classes/UserClasses.js'
+import textContainer from './DomFactory.js'
+import photos from '../../photos.js'
+import { listItem, addressContainer } from './DomFactory.js'
 
 export default function userFactory(newUser) {
 	// user from class model
@@ -9,60 +9,76 @@ export default function userFactory(newUser) {
 	console.log(newUserModel)
 
 	function article(indx) {
-		const article = document.createElement("article")
-		article.classList.add("cardCont")
+		const article = document.createElement('article')
+		// article.classList.add('cardCont')
 
-		const card = textContainer("div", "", "card")
-		card.classList.add("pink")
-		card.classList.add("pink")
-		card.classList.add("lighten-1")
+		const card = textContainer('div', '', 'card')
+		card.classList.add('pink')
+		card.classList.add('pink')
+		card.classList.add('lighten-1')
 
-		const cardImage = textContainer("div", "", "card-image")
-		cardImage.classList.add("waves-effect")
-		cardImage.classList.add("waves-block")
-		cardImage.classList.add("waves-light")
+		const cardImage = textContainer('div', '', 'card-image')
+		cardImage.classList.add('waves-effect')
+		cardImage.classList.add('waves-block')
+		cardImage.classList.add('waves-light')
 
-		const image = document.createElement("img")
-		image.classList.add("activator")
+		const image = document.createElement('img')
+		image.classList.add('activator')
 		image.src = photos[indx]
 
-		const cardContent = textContainer("div", "", "card-content")
+		const cardContent = textContainer('div', '', 'card-content')
 
 		const cardSpan = cardContent.appendChild(
-			textContainer("span", newUserModel.name, "card-title")
+			textContainer('span', newUserModel.name, 'card-title')
 		)
-		cardSpan.classList.add("activator")
-		cardSpan.classList.add("white-text")
+		cardSpan.classList.add('activator')
+		cardSpan.classList.add('white-text')
 
-		const icon = textContainer("i", "more_vert", "material-icons")
-		icon.classList.add("right")
+		const icon = textContainer('i', 'more_vert', 'material-icons')
+		icon.classList.add('right')
 		cardSpan.appendChild(icon)
 
-		const cardReveal = textContainer("div", "", "card-reveal")
-		cardReveal.classList.add("pink")
-		cardReveal.classList.add("lighten-1")
+		const cardReveal = textContainer('div', '', 'card-reveal')
+		cardReveal.classList.add('pink')
+		cardReveal.classList.add('lighten-1')
 
-		const spanTitle = textContainer("span", newUserModel.name, "card-title")
-		spanTitle.classList.add("white-text")
+		const spanTitle = textContainer('span', newUserModel.name, 'card-title')
+		spanTitle.classList.add('white-text')
 
-		const closeBtn = textContainer("i", "close", "material-icons")
-		closeBtn.classList.add("right")
+		const closeBtn = textContainer('i', 'close', 'material-icons')
+		closeBtn.classList.add('right')
 		spanTitle.appendChild(closeBtn)
 
-		const ulCollection = textContainer("ul", "", "collection")
-		ulCollection.appendChild(listItem("person", newUserModel.username))
-		ulCollection.appendChild(listItem("call", newUserModel.phone))
-		ulCollection.appendChild(listItem("alternate_email", newUserModel.email))
-		ulCollection.appendChild(listItem("language", newUserModel.website))
-		const address_one = `  ${newUserModel.address.suite} ${newUserModel.address.street}`
-		const listAddresAdress = listItem("apartment", address_one)
-		const addressCont = textContainer("div", "", "addressCont")
+		const ulCollection = textContainer('ul', '', 'collection')
+		ulCollection.appendChild(listItem('person', newUserModel.username))
+		ulCollection.appendChild(listItem('call', newUserModel.phone))
+		ulCollection.appendChild(listItem('alternate_email', newUserModel.email))
+		ulCollection.appendChild(listItem('language', newUserModel.website))
 
-		listAddresAdress.appendChild(addressCont)
+		const listAddress = document.createElement('li')
+		listAddress.classList.add('white-text')
+		listAddress.classList.add('collection-item')
+		listAddress.classList.add('pink')
+		listAddress.classList.add('lighten-1')
+
+		const span = document.createElement('span')
+		span.classList.add('material-icons')
+		span.textContent = 'apartment'
+
+		listAddress.appendChild(span)
+
+		const addressCont = addressContainer(newUserModel.address)
+
+		listAddress.appendChild(addressCont)
+
+		ulCollection.appendChild(listAddress)
+
+		// ulCollection.appendChild(listAddresAdress)
+
 		/*
 		addressCont.appendChild(listAddresAdress)
 */
-		ulCollection.appendChild(addressCont)
+		// ulCollection.appendChild(addressCont)
 
 		cardReveal.appendChild(spanTitle)
 		cardReveal.appendChild(ulCollection)
@@ -76,7 +92,7 @@ export default function userFactory(newUser) {
 	}
 
 	function giveName() {
-		const title = document.createElement("h2")
+		const title = document.createElement('h2')
 		title.textContent = newUser.name
 		return title
 	}

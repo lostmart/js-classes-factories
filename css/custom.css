@@ -1,4 +1,4 @@
-.group h2 {
+.group .group__title {
 	font-size: 2.56rem;
 	text-align: center;
 }
@@ -7,6 +7,13 @@
 	grid-template-columns: repeat(1, 1fr);
 	grid-gap: 10px;
 	padding: 5px 20px;
+}
+
+.card .card-image {
+	max-height: 217px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .card .card-content {
@@ -34,6 +41,14 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+}
+
+.addressCont__span {
+	text-align: end;
+	display: block;
+	font-size: 0.8em;
+	line-height: 1.3;
+	color: #e7e5e5;
 }
 
 @media (min-width: 575.98px) {
